@@ -1,0 +1,110 @@
+{
+    "__default__":
+    {
+        "partition": "short",
+        "mem": "4G",
+        "time": "08:00:00"
+    },
+    "bwa_mem":
+    {
+        "partition": "short",
+        "time": "11:00:00",
+        "mem": "32G"
+    },
+    "bwt2_aln":
+    {
+        "partition": "short",
+        "time": "11:00:00",
+        "mem": "8G"
+    },
+    "contamination":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "8G"
+    },
+    "sortBams":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "64G"
+    },
+    "sortUniqueBams":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "16G"
+    },
+    "gzipUnmappedFq":
+    {
+        "partition": "short",
+        "mem": "1G",
+        "time": "2:00:00"
+    },
+    "sortBedgraphs":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "16G"
+    },
+    "indexBams":
+    {
+        "partition": "short",
+        "mem": "1G",
+        "time": "2:00:00"
+    },
+    "bam_regionStat":
+    {
+        "partition": "short",
+        "mem": "1G",
+        "time": "2:00:00"
+    },
+    "motif_homer":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "8G"
+    },
+    "dedupSortedUniqueBams":
+    {
+        "partition": "short",
+        "time": "10:00:00",
+        "mem": "64G"
+    },
+    "macs2_callpeaks":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "16G"
+    },
+    "create_nonChrM":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "2G"
+    },
+    "create_unique_nonChrM":
+    {
+        "partition": "short",                                 
+        "time": "4:00:00",
+        "mem": "2G"
+    },
+    "make_FragPlot":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "8G"
+    },
+    "homer_annotatePeaks":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "8G"
+    },
+    "MarkDuplicates":
+    {
+        "partition": "short",
+        "time": "4:00:00",
+        "mem": "16G"
+    }
+}
