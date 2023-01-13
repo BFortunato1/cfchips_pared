@@ -1,0 +1,141 @@
+#NOTE: you won't typically have to change the following two lines!
+metasheet: '/n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/chips/metasheet.csv'
+ref: "/n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/chips/ref.yaml"
+
+# Added by SCB 12/19/19 for compatability with conda installation on hms o2 server:
+python2: '/home/scb20/.conda/envs/chips_py2/bin/python2'
+macs2_path: '/home/scb20/.conda/envs/chips_py2/bin/macs2'
+
+#Tell us what assembly to use (!! MUST be defined in chips/ref.yaml !!)
+assembly: hg19
+
+#ALIGNER: if you want to use bowtie2, set your aligner as 'bwt2'
+#OTHERWISE leave it as 'bwa' (default)
+aligner: 'bwa'
+#aligner: 'bwt2'
+
+#path to folder used for calcualting on-target enrichment
+enrichment_targets: 'ref_files/hg19/regions/states'
+
+
+#MOTIF CALLER: if you want to use MDSeqPos, set your aligner as 'mdseqpos'
+#OTHERWISE leave it as 'homer' (default)
+#
+#To skip motif scanning, simply comment out BOTH lines
+motif: 'homer'
+#motif: 'mdseqpos'
+
+#NOTE: optional contamination panel to check sample contamination against
+#Each element should be a path to the INDEX for the aligner you want to use
+#The name of the file will be used in the table report, 
+#e.g. /some/path/to/BWA/e_coli.fasta will be reported as "e_coli"
+contamination_panel:
+  #- /some/path/to/BWA_index/
+  #- /some/path/to/BWA_index/
+  - ./ref_files/contam_panel/hg19/hg19.fa
+  - ./ref_files/contam_panel/mm9/mm9.fa
+  - ./ref_files/contam_panel/dm3/dm3.fa
+  - ./ref_files/contam_panel/S_cerevisiae/S_cerevisiae.fa
+  - ./ref_files/contam_panel/e_coli/e_coli.fasta
+  - ./ref_files/contam_panel/mycoplasma/GCF_000018785.1_ASM1878v1/myco_PG-8A.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000085865.1_ASM8586v1/myco_ATCC23114.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000186005.1_ASM18600v1/myco_m64.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000313635.1_ASM31363v1/myco_SK76.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000420105.1_ASM42010v1/myco_ATCC23714.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000485555.1_ASM48555v1/myco_ATCC23064.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_001547975.1_ASM154797v1/myco_HAZ145_1.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000027345.1_ASM2734v1/myco_ATCC29342.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000092585.1_ASM9258v1/myco_R.fna
+  - ./ref_files/contam_panel/mycoplasma/GCF_000969765.1_ASM96976v1/myco_WVU1853.fna
+
+#NOTE: CNV analysis using QDNAseq R pkg- {true, false}
+cnv_analysis: false
+
+#Uncomment and set to 'SNAP', 'CAP', or 'KACYL' for your type of epicypher
+#spike-ins
+#default: 'SNAP'
+#epicypher_analysis: 'SNAP'
+
+# DEFINE the samples- each sample should have a name, e.g. SAMPLE1
+# and a path to the input file, e.g. data/sample1.fastq.gz
+# VALID INPUTS: fastq, fastq.gz, bam
+# NOTE: for PAIRED-END fastq/fastq.gz, give both pairs to the sample:
+# SAMPLE_1_PE:
+#   - data/sample1_pair1.fastq
+#   - data/sample1_pair2.fastq
+# WARNING: DO not mix Paired-END and Single-End samples!!!
+# ALSO: having the string "rep" or '.' in your sample name will throw an ERROR
+# '.' causes Rscripts chop off names; and it's used as replicate splitter
+samples:
+  P53K27_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K27_qAb/P53K27_qAb_CKDL220028802-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K27_qAb/P53K27_qAb_CKDL220028802-1A_HK7JFDSX5_L2_1.fq.gz
+  P53K27_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K27_Ab_R/P53K27_Ab_R_CKDL220028803-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K27_Ab_R/P53K27_Ab_R_CKDL220028803-1A_HK7JFDSX5_L2_2.fq.gz
+  mPCK4_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK4_qAb/mPCK4_qAb_CKDL220028803-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK4_qAb/mPCK4_qAb_CKDL220028803-1A_HK7JFDSX5_L2_2.fq.gz
+  P31K27_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K27_qAb/P31K27_qAb_CKDL220028803-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K27_qAb/P31K27_qAb_CKDL220028803-1A_HK7JFDSX5_L2_2.fq.gz
+  L9K27_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K27_qAb/L9K27_qAb_CKDL220028802-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K27_qAb/L9K27_qAb_CKDL220028802-1A_HK7JFDSX5_L2_1.fq.gz
+  P40K4_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K4_Ab_R/P40K4_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K4_Ab_R/P40K4_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_2.fq.gz
+  P53K4_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K4_qAb/P53K4_qAb_CKDL220028804-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K4_qAb/P53K4_qAb_CKDL220028804-1A_HK7JFDSX5_L2_1.fq.gz
+  HPK27_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK27_Ab_R/HPK27_Ab_R_CKDL220028802-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK27_Ab_R/HPK27_Ab_R_CKDL220028802-1A_HK7JFDSX5_L2_2.fq.gz
+  P31K27_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K27_Ab_R/P31K27_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K27_Ab_R/P31K27_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_1.fq.gz
+  HPK4_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK4_qAb/HPK4_qAb_CKDL220028802-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK4_qAb/HPK4_qAb_CKDL220028802-1A_HK7JFDSX5_L2_1.fq.gz
+  HPK4_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK4_Ab_R/HPK4_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK4_Ab_R/HPK4_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_1.fq.gz
+  mPCK27_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK27_Ab_R/mPCK27_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK27_Ab_R/mPCK27_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_2.fq.gz
+  L9K4_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K4_Ab_R/L9K4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K4_Ab_R/L9K4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_2.fq.gz
+  P31K4_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K4_Ab_R/P31K4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K4_Ab_R/P31K4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_2.fq.gz
+  P40K4_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K4_qAb/P40K4_qAb_CKDL220028802-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K4_qAb/P40K4_qAb_CKDL220028802-1A_HK7JFDSX5_L2_2.fq.gz
+  P53K4_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K4_Ab_R/P53K4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P53K4_Ab_R/P53K4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_2.fq.gz
+  HPK27_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK27_qAb/HPK27_qAb_CKDL220028802-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/HPK27_qAb/HPK27_qAb_CKDL220028802-1A_HK7JFDSX5_L2_2.fq.gz
+  L9K4_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K4_qAb/L9K4_qAb_CKDL220028804-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K4_qAb/L9K4_qAb_CKDL220028804-1A_HK7JFDSX5_L2_1.fq.gz
+  P31K4_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K4_qAb/P31K4_qAb_CKDL220028803-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P31K4_qAb/P31K4_qAb_CKDL220028803-1A_HK7JFDSX5_L2_2.fq.gz
+  P40K27_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K27_Ab_R/P40K27_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K27_Ab_R/P40K27_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_1.fq.gz
+  P40K27_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K27_qAb/P40K27_qAb_CKDL220028803-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/P40K27_qAb/P40K27_qAb_CKDL220028803-1A_HK7JFDSX5_L2_2.fq.gz
+  mPCK4_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK4_Ab_R/mPCK4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK4_Ab_R/mPCK4_Ab_R_CKDL220028805-1A_HK7JFDSX5_L2_1.fq.gz
+  mPCK27_qAb:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK27_qAb/mPCK27_qAb_CKDL220028803-1A_HK7JFDSX5_L2_1.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/mPCK27_qAb/mPCK27_qAb_CKDL220028803-1A_HK7JFDSX5_L2_2.fq.gz
+  L9K27_Ab_R:
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K27_Ab_R/L9K27_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_2.fq.gz
+    - /n/scratch3/users/b/brf340/20221108_plasma_chip_2_X202SC22103901-Z01-F001/usftp21.novogene.com/01.RawData/L9K27_Ab_R/L9K27_Ab_R_CKDL220028804-1A_HK7JFDSX5_L2_1.fq.gz
