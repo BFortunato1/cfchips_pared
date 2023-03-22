@@ -2,8 +2,7 @@
 
 Chips is dependent on two conda environments, *chips* and *chips_py2*.
 0. **clone the chips source code**:
-    `git clone git@bitbucket.org:cfce/chips`
-    ** NOTE: this command will create a directory called 'chips'.  After the next five steps, this directory can be safely deleted as we will explain how to *Setup a Chips Project* below. **
+    `[git clone git@bitbucket.org:cfce/chips](https://github.com/scbaca/chips_o2.git)`
 
 1. **installing chips**:
     After cloning the git repository, create the chips environment by doing this:
