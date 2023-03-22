@@ -1,29 +1,4 @@
-# Chips- ChIP-seq analysis pipeline in snakemake
-
-# Introduction to Chips
-- relation to ChiLin
-- relation to viper
-
-# Table of Contents
-# Installing Chips
-You will only need to install Chips once, either for your own use, or if you are a system administrator, for the entire system (see **Appendix C**).  In other words, you will only need to perform the steps described in this section only once.  
-NOTE: this section ends with **Using Chips** (below)
-
-### Required software
-We assume that the following tools are already installed on your system and that you have some basic familiarity in using them:
-`git`
-`wget`
-### Installing Miniconda
-Chips uses the [Conda](https://conda.io/docs/intro.html) packaging system to manage and install all of its required software packages.
-To install miniconda:
-1.  download the Miniconda installer: 
-    `wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh`
-2.  run the installer:
-    `bash Miniconda3-latest-Linux-x86_64.sh`
-### Installing the Chips conda environments
-Conda environments are briefly explained [here](https://conda.io/docs/using/envs.html).  Briefly, if you are familiar with [Python Virtual Environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/) or [Docker Containers](https://www.docker.com/what-container) then Conda environments should be a familiar concept.  
-
-If you are **not familiar** with these concepts, then a conda environment is simply a **self-contained package space that is composed of various packages.**  So for example, a **bioinformatics** conda space may include packages such as **R**, **samtools**, **bedtools**, etc.
+# cfChips for O2- ChIP-seq analysis pipeline in snakemake specialized for cfCHIP data
 
 Chips is dependent on two conda environments, *chips* and *chips_py2*.
 0. **clone the chips source code**:
@@ -52,9 +27,10 @@ Chips is dependent on two conda environments, *chips* and *chips_py2*.
     	      	       `configureHomer.pl -install hg38`
     For mouse samples: `configureHomer.pl -install mm9`
 
-### Downloading the Chips static reference files
-Chips comes pre-packaged with static reference files (e.g. bwa index, refSeq tables, etc.) for hg19 and mm9.  You can download those files **HERE--missing**.  One benefit of 
-Many of these files are commonly used static reference files, and if you would like to use the files that you already have, **OR** if you are interested in sup then please see **Appendix E**.
+### Chips reference files
+Chips comes pre-packaged with static reference files (e.g. bwa index, refSeq tables, etc.) for hg19 and mm9.  These files are located at 
+/n/scratch3/users/s/scb20/_RESTORE/scb20/cfchip/ref_files
+It is suggested that you create a symbolic link to this location.
 
 # Using Chips
 ### Anatomy of a Chips project
@@ -125,8 +101,8 @@ After a successful **Chips** run, another 'analysis' folder is generated which c
     - copying ref.yaml
 ### Running Chips
 1. source activate chips
-2. dry run
-3. full run
+2. dry run (snakemake -s chips/chips.Snakefile -npr)
+3. full run (snakemake -s chips/chips.Snakefile -pr --cores 6)
 
 ### Appendix A: System requirements
 ### Appendix B: Recommended requirements
