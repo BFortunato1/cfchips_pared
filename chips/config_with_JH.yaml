@@ -17,9 +17,6 @@ aligner: 'bwa'
 motif: 'homer'
 #motif: 'mdseqpos'
 
-#path to folder used for calcualting on-target enrichment
-enrichment_targets: 'ref_files/hg19/regions/states'
-
 #NOTE: optional contamination panel to check sample contamination against
 #Each element should be a path to the INDEX for the aligner you want to use
 #The name of the file will be used in the table report, 
@@ -62,150 +59,223 @@ cnv_analysis: true
 # ALSO: having the string "rep" or '.' in your sample name will throw an ERROR
 # '.' causes Rscripts chop off names; and it's used as replicate splitter
 samples:
-  K4_PS96_2:
+  K4_PS96_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS96_2/K4_PS96_2_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS96_2/K4_PS96_2_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_MGI933_1:
+  K27_MGI933_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_MGI933_1/K27_MGI933_1_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_MGI933_1/K27_MGI933_1_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_TRHC47_1:
+  K4_TRHC47_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC47_1/K4_TRHC47_1_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC47_1/K4_TRHC47_1_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_BELI70_2:
+  K27_BELI70_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI70_2/K27_BELI70_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI70_2/K27_BELI70_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_AMP13_2:
+  JC_K4P77_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4P77_5/JC_K4P77_5_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4P77_5/JC_K4P77_5_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+  HS_K27P77_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27P77_5/HS_K27P77_5_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27P77_5/HS_K27P77_5_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+  HS_K4P77_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4P77_4/HS_K4P77_4_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4P77_4/HS_K4P77_4_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+  K27_AMP13_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_AMP13_2/K27_AMP13_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_AMP13_2/K27_AMP13_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
-  K4_PS_122-2:
-    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS_122-2/K4_PS_122-2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
-    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS_122-2/K4_PS_122-2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_MGI938_1:
+  K4_TRC40_1
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC40_1/K4_TRC40_1_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC40_1/K4_TRC40_1_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
+  JC_K27MPc_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27MPc_5/JC_K27MPc_5_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27MPc_5/JC_K27MPc_5_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+  K27_MGI938_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_MGI938_1/K27_MGI938_1_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_MGI938_1/K27_MGI938_1_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_TRC23_1:
+  K4_TRC23_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC23_1/K4_TRC23_1_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC23_1/K4_TRC23_1_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_BELI56_2:
+  K4_BELI56_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI56_2/K4_BELI56_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI56_2/K4_BELI56_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_TRHC53_2:
+  JC_K27HP_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27HP_5/JC_K27HP_5_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27HP_5/JC_K27HP_5_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+  JC_K4HP_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4HP_5/JC_K4HP_5_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4HP_5/JC_K4HP_5_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+  HS_K27HP_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27HP_4/HS_K27HP_4_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27HP_4/HS_K27HP_4_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+  K27_TRHC53_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC53_2/K27_TRHC53_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC53_2/K27_TRHC53_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_TRC40_1:
-    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC40_1/K4_TRC40_1_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC40_1/K4_TRC40_1_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_ISIS13_1:
+  K4_TRHC66_2
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC66_2/K4_TRHC66_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC66_2/K4_TRHC66_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
+  K27_ISIS13_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_ISIS13_1/K27_ISIS13_1_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_ISIS13_1/K27_ISIS13_1_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_PS123_2:
+  JC_K27P77_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27P77_5/JC_K27P77_5_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27P77_5/JC_K27P77_5_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+  HS_K4HP_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4HP_5/HS_K4HP_5_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4HP_5/HS_K4HP_5_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+  K4_PS123_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS123_2/K4_PS123_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS123_2/K4_PS123_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_AMP11_2:
+  K27_AMP11_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_AMP11_2/K27_AMP11_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_AMP11_2/K27_AMP11_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_MGI_933_1:
-    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_MGI_933_1/K4_MGI_933_1_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
-    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_MGI_933_1/K4_MGI_933_1_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_BELI74_2:
+  HS_K4MPc_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4MPc_4/HS_K4MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4MPc_4/HS_K4MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_2.fq.gz
+  K4_PS122_2
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS122_2/K4_PS122_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS122_2/K4_PS122_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
+  HS_K27MPc_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27MPc_5/HS_K27MPc_5_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27MPc_5/HS_K27MPc_5_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+  K4_BELI74_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI74_2/K4_BELI74_2_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI74_2/K4_BELI74_2_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_TRHC33_2:
+  K27_TRHC33_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC33_2/K27_TRHC33_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC33_2/K27_TRHC33_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
-  K4_TRC11_1:
+  K4_TRC11_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC11_1/K4_TRC11_1_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC11_1/K4_TRC11_1_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_TRC25_1:
+  K27_TRC25_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC25_1/K27_TRC25_1_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC25_1/K27_TRC25_1_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_TRC30_1:
+  K4_TRC30_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC30_1/K4_TRC30_1_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC30_1/K4_TRC30_1_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_TRHC25_2:
+  K4_TRHC25_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC25_2/K4_TRHC25_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC25_2/K4_TRHC25_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
-  K4_BELI64_2:
+  K4_BELI64_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI64_2/K4_BELI64_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI64_2/K4_BELI64_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_BELI68_2:
+  JC_K4MPc_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4MPc_5/JC_K4MPc_5_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4MPc_5/JC_K4MPc_5_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+  K27_BELI68_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI68_2/K27_BELI68_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI68_2/K27_BELI68_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_PS96_2:
+  K27_PS96_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS96_2/K27_PS96_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS96_2/K27_PS96_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_PS123_2:
+  JC_K4HP_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4HP_4/JC_K4HP_4_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4HP_4/JC_K4HP_4_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+  K27_PS123_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS123_2/K27_PS123_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS123_2/K27_PS123_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_AMP11_2:
+  K4_AMP11_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_AMP11_2/K4_AMP11_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_AMP11_2/K4_AMP11_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_BELI70_2:
+  HS_K27HP_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27HP_5/HS_K27HP_5_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27HP_5/HS_K27HP_5_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+  JC_K27MPc_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27MPc_4/JC_K27MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27MPc_4/JC_K27MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_2.fq.gz
+  K4_BELI70_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI70_2/K4_BELI70_2_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI70_2/K4_BELI70_2_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_TRHC47_1:
+  K27_TRHC47_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC47_1/K27_TRHC47_1_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC47_1/K27_TRHC47_1_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
-  K27_PS75_2:
+  K27_PS75_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS75_2/K27_PS75_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS75_2/K27_PS75_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_PS55_2:
+  JC_K27HP_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27HP_4/JC_K27HP_4_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27HP_4/JC_K27HP_4_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+  HS_K27P77_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27P77_4/HS_K27P77_4_CKDL230002905-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27P77_4/HS_K27P77_4_CKDL230002905-1A_HMLFCDSX5_L1_1.fq.gz
+  K27_PS55_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS55_2/K27_PS55_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS55_2/K27_PS55_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_TRHC53_2:
+  K4_TRHC53_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC53_2/K4_TRHC53_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC53_2/K4_TRHC53_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_TRC30_1:
+  HS_K4P77_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4P77_5/HS_K4P77_5_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4P77_5/HS_K4P77_5_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+  K27_TRC30_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC30_1/K27_TRC30_1_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC30_1/K27_TRC30_1_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_TRC25_1:
+  K4_TRC25_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC25_1/K4_TRC25_1_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRC25_1/K4_TRC25_1_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_TRC11_1:
+  K27_TRC11_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC11_1/K27_TRC11_1_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC11_1/K27_TRC11_1_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_MGI938_1:
+  K4_MGI938_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_MGI938_1/K4_MGI938_1_CKDL230002906-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_MGI938_1/K4_MGI938_1_CKDL230002906-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_BELI56_2:
+  K27_BELI56_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI56_2/K27_BELI56_2_CKDL230002909-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI56_2/K27_BELI56_2_CKDL230002909-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_PS122_2:
+  JC_K4P77_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4P77_4/JC_K4P77_4_CKDL230002905-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4P77_4/JC_K4P77_4_CKDL230002905-1A_HMLFCDSX5_L1_2.fq.gz
+  K27_PS122_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS122_2/K27_PS122_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_PS122_2/K27_PS122_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
-  K27_TRHC66_2:
+  samples.csv
+  JC_K4MPc_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4MPc_4/JC_K4MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K4MPc_4/JC_K4MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_2.fq.gz
+  HS_K4MPc_5
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4MPc_5/HS_K4MPc_5_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4MPc_5/HS_K4MPc_5_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+  HS_K27MPc_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27MPc_4/HS_K27MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K27MPc_4/HS_K27MPc_4_CKDL230002905-1A_HMLFCDSX5_L1_1.fq.gz
+  K27_TRHC66_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC66_2/K27_TRHC66_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC66_2/K27_TRHC66_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_PS55_2:
+  K4_PS55_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS55_2/K4_PS55_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS55_2/K4_PS55_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_ISIS13_1:
+  K4_ISIS13_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_ISIS13_1/K4_ISIS13_1_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_ISIS13_1/K4_ISIS13_1_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_BELI68_2:
+  K4_BELI68_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI68_2/K4_BELI68_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_BELI68_2/K4_BELI68_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
-  K4_PS75_2:
+  K4_PS75_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS75_2/K4_PS75_2_CKDL230002907-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_PS75_2/K4_PS75_2_CKDL230002907-1A_HMLFCDSX5_L1_1.fq.gz
-  K4_TRHC33_2:
+  JC_K27P77_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27P77_4/JC_K27P77_4_CKDL230002903-1A_HMLFCDSX5_L1_2.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/JC_K27P77_4/JC_K27P77_4_CKDL230002903-1A_HMLFCDSX5_L1_1.fq.gz
+  HS_K4HP_4
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4HP_4/HS_K4HP_4_CKDL230002904-1A_HMLFCDSX5_L1_1.fq.gz
+    - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/HS_K4HP_4/HS_K4HP_4_CKDL230002904-1A_HMLFCDSX5_L1_2.fq.gz
+  K4_TRHC33_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC33_2/K4_TRHC33_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_TRHC33_2/K4_TRHC33_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K27_TRHC25_2:
+  K27_TRHC25_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC25_2/K27_TRHC25_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRHC25_2/K27_TRHC25_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
-  K27_BELI64_2:
+  K27_BELI64_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI64_2/K27_BELI64_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI64_2/K27_BELI64_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
-  K27_BELI74_2:
+  K27_BELI74_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI74_2/K27_BELI74_2_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_BELI74_2/K27_BELI74_2_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
-  K27_TRC23_1:
+  K27_TRC23_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC23_1/K27_TRC23_1_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC23_1/K27_TRC23_1_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz
-  K27_TRC40_1:
+  K27_TRC40_1
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC40_1/K27_TRC40_1_CKDL230002908-1A_HMLFCDSX5_L1_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K27_TRC40_1/K27_TRC40_1_CKDL230002908-1A_HMLFCDSX5_L1_2.fq.gz
-  K4_AMP13_2:
+  K4_AMP13_2
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_AMP13_2/K4_AMP13_2_CKDL230002910-1A_HMLHLDSX5_L4_1.fq.gz
     - /mnt/cfce-stor3/projects/freedman-lab/seq_rawdata/20230210_X202SC23012627-Z01-F001_chips/usftp21.novogene.com/01.RawData/K4_AMP13_2/K4_AMP13_2_CKDL230002910-1A_HMLHLDSX5_L4_2.fq.gz

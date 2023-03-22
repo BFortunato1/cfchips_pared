@@ -1,0 +1,12 @@
+name: chips_py2
+channels:
+- r
+- bioconda
+- defaults
+dependencies:
+- python=2.7.9=3
+- bx-python
+- numpy
+- cython
+- jinja2
+- macs2

@@ -1,0 +1,59 @@
+name: chips
+channels:
+- bioconda
+- conda-forge
+- defaults
+dependencies:
+#GENERAL
+- snakemake=4.8.1
+- samtools>=1.8
+- python>=3.5.2
+- r>=3.4.1
+- numpy
+
+#align_*.snakefile
+- bwa>=0.7.15
+- bowtie2>=2.3.4.1
+- sambamba
+- picard>=2.18.4
+- bedtools>=2.25.0 #for bamToFastq
+
+#bam_snapshot
+- bioconductor-gviz
+
+#meta aka ceas.snakefile
+
+#conservation.snakefile
+
+#contamination.snakefile
+
+#fastqc.snakefile
+- seqtk
+- fastqc>=0.11.5
+- r-ggplot2>=2.2.0
+- r-reshape2>=1.4.2
+
+#frips.snakefile
+
+#mapmaker.snakefile
+- git
+- ruamel.yaml
+
+#motif_*.snakefile
+- perl>=5.18.2
+- homer>=4.7
+#Tied to 2.8.2=3 b/c other updated versions produce missing seqlogo bin (homer)
+- weblogo=2.8.2=3
+
+#peaks.snakefile
+- ucsc-bedgraphtobigwig>=332
+- ucsc-bedsort>=332
+
+#qdnaseq.snakefile
+- bioconductor-qdnaseq
+
+#report.snakefile
+- tabulate
+
+#BUGS: minor missing
+- r-r.utils
