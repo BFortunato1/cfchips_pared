@@ -12,11 +12,8 @@ def getRuns(config):
     """parse metasheet for Run groupings"""
     ret = {}
 
-    #LEN: Weird, but using pandas to handle the comments in the file
-    #KEY: need skipinitialspace to make it fault tolerant to spaces!
     metadata = pd.read_table(config['metasheet'], index_col=0, sep=',', comment='#', skipinitialspace=True)
     f = metadata.to_csv().split() #make it resemble an actual file with lines
-    #SKIP the hdr
     for l in f[1:]:
         tmp = l.strip().split(",")
         #print(tmp)
@@ -28,6 +25,8 @@ def getRuns(config):
 
 def addPy2Paths_Config(config):
     """ADDS the python2 paths to config"""
+    """There are a few dependencies that are incompatible wtih this environment (macs2 - a ChIP-seq peak calling tool, and python2). These are in a separate conda environment (recipe here):
+envs/chips_py2_env.yaml"""
     conda_root = subprocess.check_output('conda info --root',shell=True).decode('utf-8').strip()
     conda_path = os.path.join(conda_root, 'pkgs')
     config["python2_pythonpath"] = os.path.join(conda_root, 'envs', 'chips_py2', 'lib', 'python2.7', 'site-packages')
@@ -109,47 +108,14 @@ def all_targets(wildcards):
     _qdnaseq = config["cnv_analysis"]
     ls = []
     #IMPORT all of the module targets
-   # ls.extend(align_targets(wildcards))
-   # ls.extend(peaks_targets(wildcards))
-   # ls.extend(fastqc_targets(wildcards))
- #   ls.extend(conservation_targets(wildcards))
-   # ls.extend(ceas_targets(wildcards))
+    ls.extend(align_targets(wildcards))
+    ls.extend(peaks_targets(wildcards))
+    ls.extend(fastqc_targets(wildcards))
+    ls.extend(conservation_targets(wildcards))
+    ls.extend(ceas_targets(wildcards))
     ls.extend(frips_targets(wildcards))
-  #  ls.extend(contamination_targets(wildcards))
-  # ls.extend(mapmaker_targets(wildcards))
-#    ls.extend(bam_snapshots_targets(wildcards))
 
-    #Check to see if motif is enabled
-   # if 'motif' in config:
-      #  ls.extend(motif_targets(wildcards))
-
-    #HANDLE CNV/qdnaseq analysis
-    if _qdnaseq:
-        #ls.extend(qdnaseq_targets(wildcards))
-
-        #check for some inputs
-        hasInput = False
-
-        #HACK: for some reason, using the following line causes errors
-        #for (run, ls) in config['runs'].items():
-        #SO we call getRuns (from above) using a simplified config
-        tmp_config = {'metasheet': config['metasheet']}
-        runs = getRuns(tmp_config)['runs'].copy()
-        for (run) in runs.keys():
-            #NOTE: if i do this, this is an error!
-            #ls = runs[run]
-            if runs[run][1] or runs[run][3]:
-                #these are the control sample indices
-                hasInput = True
-                break
-
-        if hasInput:
-            ls.extend(qdnaseq_targets(wildcards))
-
-    if "epicypher_analysis" in config and config["epicypher_analysis"]:
-        ls.extend(epicypher_targets(wildcards))
-        
-   # ls.extend(report_targets(wildcards))
+    ls.extend(report_targets(wildcards))
     return ls
 
 rule target:
@@ -162,21 +128,11 @@ if config['aligner'] == 'bwt2':
 else:
     include: "./modules/align_bwa.snakefile"      # rules specific to BWA
 
-#include: "./modules/align_common.snakefile"  # common align rules
-#include: "./modules/peaks.snakefile"         # peak calling rules
-#include: "./modules/fastqc.snakefile"        # fastqc (sequence qual) rules
-#include: "./modules/conservation.snakefile"  # generate conservation plot
-#include: "./modules/ceas.snakefile"          # annotate peak regions
+include: "./modules/align_common.snakefile"  # common align rules
+include: "./modules/peaks.snakefile"         # peak calling rules
+include: "./modules/fastqc.snakefile"        # fastqc (sequence qual) rules
+include: "./modules/conservation.snakefile"  # generate conservation plot
+include: "./modules/ceas.snakefile"          # annotate peak regions
 include: "./modules/frips.snakefile"         # fraction of reads in peaks
 
-#if 'motif' in config and config['motif'] == 'mdseqpos':
-#    include: "./modules/motif_mdseqpos.snakefile"     # mdseqpos motif module
-#else:
-#    include: "./modules/motif_homer.snakefile"        # homer motif module
-
-#include: "./modules/contamination.snakefile" # contamination panel module
-#include: "./modules/qdnaseq.snakefile"       # qdnaseq (CNV) module
-#include: "./modules/mapmaker.snakefile"      # chips-mapmaker interface module
-#include: "./modules/epicypher.snakefile"     # epicypher spike-in module
-#include: "./modules/bam_snapshots.snakefile" # generate bam snapshots module
-#include: "./modules/report.snakefile"        # report module
+include: "./modules/report.snakefile"        # report module
