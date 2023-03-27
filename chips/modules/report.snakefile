@@ -40,59 +40,6 @@ def processRunInfo(run_info_file):
     fdr = f.readline().strip()
     return (ver,fdr)
 
-# def genPeakSummitsTable(conservPlots,motifSummary):
-    # """generates rst formatted table that will contain the conservation plot
-    # and motif analysis for ALL runs
-    # hdr = array of header/column elms
-    # """
-    # #parse MotifSummary
-    # motifs = parseMotifSummary(motifSummary)
-    # runs = sorted(list(motifs.keys()))
-    # #HEADER- PROCESS the different modules differently
-    # if config['motif'] == 'mdseqpos':
-        # hdr = ["Run", "Conservation","MotifID","MotifName","Logo","Zscore"]
-    # else:
-        # hdr = ["Run", "Conservation","Motif","Logo","Pval","LogPval"]
-    # #BUILD up the rest of the table
-    # rest = []
-    # for run,img in zip(runs,conservPlots):
-        # #HANDLE null values
-        # if img and (img != 'NA'):
-            # conserv = ".. image:: %s" % data_uri(img)
-        # else:
-            # conserv = "NA"
-        # #HANDLE null values
-        # if motifs[run]['logo'] and (motifs[run]['logo'] != 'NA'):
-            # motif_logo = ".. image:: %s" % data_uri(motifs[run]['logo'])
-        # else:
-            # motif_logo = "NA"
-
-        # #PROCESS the different modules differently
-        # if config['motif'] == 'mdseqpos':
-            # rest.append([run, conserv, motifs[run]['motifId'], motifs[run]['motifName'], motif_logo,  motifs[run]['zscore']])
-        # else:
-            # rest.append([run, conserv, motifs[run]['motifName'], motif_logo, motifs[run]['pval'],motifs[run]['logp']])
-
-    # ret = tabulate(rest, hdr, tablefmt="rst")
-    # return ret
-
-# def parseMotifSummary(motif_csv):
-    # """Given a motifSummary.csv file, parses this into a dictionary 
-    # {run: {motifId: , motifName: , logo: , zscore: }}
-    # Returns this dictionary
-    # """
-    # ret = {}
-    # f = open(motif_csv)
-    # hdr = f.readline().strip().split(",")
-    # for l in f:
-        # tmp = l.strip().split(",")
-        # if config['motif'] == 'mdseqpos':
-            # ret[tmp[0]] = {'motifId': tmp[1], 'motifName': tmp[2], 'logo': tmp[3], 'zscore': tmp[4]}
-        # else:
-            # ret[tmp[0]] = {'motifName':tmp[1], 'logo':tmp[2], 'pval': tmp[3], 'logp': tmp[4]}
-    # f.close()
-    # return ret
-
 def sampleGCandContam_table(fastqc_stats, fastqc_gc_plots, contam_table):
     """generates rst formatted table that will contain the fastqc GC dist. plot
     for all samples
@@ -164,8 +111,6 @@ rule report:
         conservPlots = sorted(_getRepInput("analysis/conserv/$runRep/$runRep_conserv_thumb.png")),
 	samples_summary="analysis/report/sequencingStatsSummary.csv",
 	runs_summary="analysis/report/peaksSummary.csv",
-#	contam_panel="analysis/contam/contamination.csv",
-        #motif="analysis/motif/motifSummary.csv",
         fastqc_stats="analysis/fastqc/fastqc.csv",
         fastqc_gc_plots = expand("analysis/fastqc/{sample}/{sample}_perSeqGC_thumb.png", sample=config["samples"]),
     params:
@@ -176,8 +121,6 @@ rule report:
         (macsVersion, fdr) = processRunInfo(input.run_info)
         samplesSummaryTable = csvToSimpleTable(input.samples_summary)
         runsSummaryTable = csvToSimpleTable(input.runs_summary)
-        #peakSummitsTable = genPeakSummitsTable(input.conservPlots, input.motif)
-#        sampleGCandContam = sampleGCandContam_table(input.fastqc_stats, input.fastqc_gc_plots, input.contam_panel)
         tmp = _ReportTemplate.substitute(cfce_logo=data_uri(input.cfce_logo),map_stat=data_uri(input.map_stat),pbc_stat=data_uri(input.pbc_stat),peakSummitsTable=peakSummitsTable,peakFoldChange_png=data_uri(input.peakFoldChange_png))
         report(tmp, output.html, metadata="Len Taing", **input)
 
@@ -233,14 +176,3 @@ rule plot_peakFoldChange:
     log: _logfile
     shell:
         "Rscript chips/modules/scripts/plot_foldChange.R {input} {output}"
-
-#DEPRECATED!! this plot is no longer used!
-rule plot_nonChrM_stats:
-    input:
-        "analysis/frips/nonChrM_stats.csv"
-    output:
-        "analysis/report/attic/nonChrM_stats.png"
-    log: _logfile
-    shell:
-        "Rscript chips/modules/scripts/plot_nonChrM.R {input} {output}"
-
