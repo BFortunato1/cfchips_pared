@@ -1,1 +1,0 @@
-report.snakefile:        #peakSummitsTable = genPeakSummitsTable(input.conservPlots, input.motif)
