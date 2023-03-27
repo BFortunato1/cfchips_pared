@@ -1,2 +1,0 @@
-# cfchips
-cfchips analysis pipeline
