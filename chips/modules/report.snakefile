@@ -7,7 +7,7 @@ from snakemake.report import data_uri
 #DEPENDENCIES
 from tabulate import tabulate
 
-_ReportTemplate = Template(open("/n/scratch3/users/b/brf340/20221105_novogene_partial_Reduced_B_A/chips/static/chips_report.txt").read())
+_ReportTemplate = Template(open("chips/static/chips_report.txt").read())
 _logfile = "analysis/logs/report.log"
 
 def report_targets(wildcards):
