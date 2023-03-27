@@ -1,8 +1,12 @@
 #MODULE: FRiPs- Calculating the fraction of reads under peak (score/percentage)
-
+#The fraction of reads in peaks (commonly denoted as FRiP) is a measure of how many of the total reads are found within the peaks. 
+#It is calculated as the number of reads in peaks divided by the total number of reads. This value can be used to assess the 
+#quality of the data and the specificity of the experiment. A high fraction of reads in peaks indicates that the majority of the reads are 
+#located in the regions of interest, and that the experiment has a high signal-to-noise ratio. On the other hand, a low fraction of 
+#reads in peaks may indicate that the majority of the reads are located in non-specific regions, and that the experiment has a low specificity.
 #helper fns to get samples associated for each run
+
 #copied directly from peaks.snakefile
-#TODO: centralize these helper fns!
 
 #PARAMETERS:
 _logfile="analysis/logs/frips.log"
@@ -147,6 +151,9 @@ rule promoter_reads:
     shell:
         "chips/modules/scripts/fr_promoter_reads.sh -a {input.treat} -b {params.bed} > {output} 2>>{log}"
 
+
+#for a given bam file test overlap with on- and off-target regions
+#calculate enrichment for on-target reads        
 rule enrichment:
     """Calculate on and off-target enrichment"""
     input:
