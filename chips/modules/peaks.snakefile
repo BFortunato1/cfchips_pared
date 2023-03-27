@@ -69,10 +69,6 @@ def peaks_targets(wildcards):
             ls.append("analysis/peaks/%s/%s_sorted_peaks.narrowPeak.bed" % (runRep,runRep))
             ls.append("analysis/peaks/%s/%s_sorted_summits.bed" % (runRep,runRep))
             ls.append("analysis/peaks/%s/%s_treat_pileup.bw" % (runRep,runRep))
-#            ls.append("analysis/peaks/%s/%s_control_lambda.bw" % (runRep,runRep))
-#            ls.append("analysis/peaks/%s/%s_treat_pileup.sorted.bdg.gz" % (runRep,runRep))
-#            ls.append("analysis/peaks/%s/%s_control_lambda.sorted.bdg.gz" % (runRep,runRep))
-
     ls.append("analysis/peaks/peakStats.csv")
     ls.append("analysis/peaks/run_info.txt")
     ls.append("analysis/peaks/all_treatments.igv.xml")
