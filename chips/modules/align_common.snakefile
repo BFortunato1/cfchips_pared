@@ -83,12 +83,12 @@ rule collect_map_stats:
 rule sortBams:
     """General sort rule--take a bam {filename}.bam and 
     output {filename}.sorted.bam"""
+#Sorted BAM has the data sorted by chromosomes/contigs/scaffolds whatever 
+#is in your reference genome. In order to efficiently display/access the data the BAM file has to be sorted.
     input:
-        #"analysis/align/{sample}/{filename}.bam"
         getBam
     output:
         temp("analysis/align/{sample}/{sample}.sorted.bam"),
-        #"analysis/align/{sample}/{sample}.sorted.bam.bai"
     message: "ALIGN: sort bam file"
     log: _logfile
     threads: _align_threads
@@ -113,12 +113,14 @@ rule sortUniqueBams:
 rule dedupSortedUniqueBams:
     """Dedup sorted unique bams using PICARD
     output {sample}_unique.sorted.dedup.bam"""
+#This tool locates and tags duplicate reads in a BAM or SAM file, where duplicate reads are defined as originating from a single fragment of DNA.
+#The tool's main output is a new SAM or BAM file, in which duplicates have been identified in the SAM flags field for each read
     input:
         "analysis/align/{sample}/{sample}_unique.sorted.bam"
     output:
         bam="analysis/align/{sample}/{sample}_unique.sorted.dedup.bam",
 	metrics="analysis/align/{sample}/{sample}_dup.metrics.txt",
-	complexity="analysis/align/{sample}/{sample}_complexity.tsv",
+	complexity="analysis/align/{sample}/{sample}_complexity.tsv", #Library complexity refers to the number of unique DNA fragments present in a given library
 	plot="analysis/align/{sample}/{sample}_saturation.pdf"
     message: "ALIGN: dedup sorted unique bam file"
     log: _logfile
@@ -130,6 +132,8 @@ rule dedupSortedUniqueBams:
 
 rule indexBam:
     """Index bam file"""
+#Indexing a genome sorted BAM file allows one to quickly extract alignments overlapping particular genomic regions. Moreover, indexing is required 
+#by genome viewers such as IGV so that the viewers can quickly display alignments in each genomic region to which you navigate.
     input:
         "analysis/align/{sample}/{prefix}.bam"
     output:
@@ -141,6 +145,7 @@ rule indexBam:
 
 rule bedpe:
 # make a bedpe file with read locations from deduplicated bam file
+#basically a bed file denoting inter chromosomal features
     input:
         bam="analysis/align/{sample}/{sample}_unique.sorted.dedup.bam",
     output:
