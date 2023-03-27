@@ -1,4 +1,12 @@
 #MODULE: CEAS- annotating where the peaks fall (promoter, exon, intron, interg)
+#Cis-regulatory Element Annotation System (CEAS)
+#Introns and exons are nucleotide sequences within a gene. Introns are removed by RNA splicing as RNA matures, meaning that they are not expressed in the 
+#final messenger RNA (mRNA) product, while exons go on to be covalently bonded to one another in order to create mature mRNA.
+
+#Intergenic regions are the stretches of DNA located between genes
+
+#A promoter, as related to genomics, is a region of DNA upstream of a gene where relevant proteins (such as RNA polymerase and transcription factors) 
+#bind to initiate transcription of that gene. The resulting transcription produces an RNA molecule
 _logfile="analysis/logs/ceas.log"
 
 #NOTE: using the _refs from chips.snakefile
@@ -70,6 +78,7 @@ rule takeTop5k:
 
 #------------------------------------------------------------------------------
 rule DHS_intersectDHS:
+    #In genetics, DNase I hypersensitive sites (DHSs) are regions of chromatin that are sensitive to cleavage by the DNase I enzyme.
     """Intersect PEAKS with DHS regions"""
     input:
         'analysis/ceas/{run}.{rep}/{run}.{rep}_sorted_5k_peaks.bed'
@@ -80,9 +89,6 @@ rule DHS_intersectDHS:
     output:
         'analysis/ceas/{run}.{rep}/{run}.{rep}_DHS_peaks.bed'
     run:
-        #HACK! IN the CASE where no DHS is defined/available for species/assemb
-        #USE AN EMPTY FILE.  CONSEQUENCE- everything downstream will count 0 
-        #DHS regions, NOT N/A
         if config['DHS']:
             shell("intersectBed -wa -u -a {input} -b {params.dhs} > {output} 2>>{log}")
         else:
@@ -132,43 +138,6 @@ rule VELCRO_stat:
         'analysis/ceas/{run}.{rep}/{run}.{rep}_velcro_stats.txt'
     shell:
         "wc -l {input.n} {input.velcro} > {output} 2>>{log}"
-
-rule bam_regionStat:
-    """count the number of reads in promoter, exon, dhs--these regions
-    are defined in the config.yaml"""
-    input:
-        "analysis/align/{sample}/{sample}_4M_unique_nonChrM.bam"
-    params:
-        bed = lambda wildcards: config[wildcards.region],
-        #for use in message only
-        msg = lambda wildcards: "%s:%s" % (wildcards.sample, wildcards.region)
-    message: "CEAS: bam stat region {params.msg}"
-    log: _logfile
-    output:
-        #make temp
-        'analysis/ceas/samples/{sample}/{sample}.{region}'
-    shell:
-        "chips/modules/scripts/meta_bamRegionCount.sh -i {input} -b {params.bed} -o {output} 2>> {log}"
-
-rule collect_BamRegionStats:
-    """collect the BAM region stats into a single file"""
-    input:
-        #INPUT the stats directories--
-        #hack just add all of the file so we dont get a missing input exception
-        #and collect the directories down below
-        dhs = expand("analysis/ceas/samples/{sample}/{sample}.DHS", sample=config['samples']),
-        prom = expand("analysis/ceas/samples/{sample}/{sample}.promoters", sample=config['samples']),
-        exon = expand("analysis/ceas/samples/{sample}/{sample}.exons", sample=config['samples'])
-    message: "CEAS: collect bam region stats"
-    log: _logfile
-    output:
-        'analysis/ceas/samples/bamRegionStats.csv'
-    run:
-        #REMOVE the file to get directories - 
-        #Aribitrarily USE only the exon list
-        dirs = ["/".join(d.split("/")[:-1]) for d in input.exon]
-        d = " -d ".join(dirs)
-        shell("chips/modules/scripts/ceas_collectBamRegStats.py -d {d} > {output} 2>>{log}")
 
 rule collect_DHSstats:
     """collect the DHS stats into a single file"""
