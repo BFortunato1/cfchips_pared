@@ -6,18 +6,12 @@ def align_targets(wildcards):
     """Generates the targets for this module"""
     ls = []
     for sample in config["samples"]:
-#        ls.append("analysis/align/%s/%s.sorted.bam" % (sample,sample))
-#        ls.append("analysis/align/%s/%s.sorted.bam.bai" % (sample,sample))
-#        ls.append("analysis/align/%s/%s_unique.sorted.bam" % (sample,sample))
-#        ls.append("analysis/align/%s/%s_unique.sorted.bam.bai"%(sample,sample))
         ls.append("analysis/align/%s/%s_unique.sorted.dedup.bam" % (sample,sample))
         ls.append("analysis/align/%s/%s_unique.sorted.dedup.bam.bai" % (sample,sample))
 	ls.append("analysis/align/%s/%s_dup.metrics.txt" % (sample,sample)) # note: this will only work with bwa
 	ls.append("analysis/align/%s/%s_saturation.pdf" % (sample,sample))
 	ls.append("analysis/align/%s/%s_complexity.tsv" % (sample,sample))
 	ls.append("analysis/align/%s/%s_fragments.bed" % (sample,sample))
-#        ls.append("analysis/align/%s/%s.unmapped.fq.gz" % (sample,sample))
-#        ls.append("analysis/align/%s/%s_readsPerChrom.txt" % (sample,sample))
     ls.append("analysis/align/mapping.csv")
     return ls
 
@@ -42,7 +36,6 @@ rule align_all:
 rule uniquely_mapped_reads:
     """Get the uniquely mapped reads"""
     input:
-        #"analysis/align/{sample}/{sample}.bam"
         getBam
     output:
         temp("analysis/align/{sample}/{sample}_unique.bam")
@@ -58,7 +51,6 @@ rule uniquely_mapped_reads:
 rule map_stats:
     """Get the mapping stats for each aligment run"""
     input:
-        #bam="analysis/align/{sample}/{sample}.bam",
         bam=getBam,
         uniq_bam="analysis/align/{sample}/{sample}_unique.bam"
     output:
